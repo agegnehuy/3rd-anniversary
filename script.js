@@ -182,10 +182,10 @@ if (!isCoarse && !prefersReducedMotion) {
 (function spawnAmbientLights() {
   if (prefersReducedMotion) return;
   const palette = [
-    "hsla(332,90%,68%,0.46)",
-    "hsla(36,78%,68%,0.40)",
-    "hsla(282,72%,68%,0.34)",
-    "hsla(198,80%,72%,0.30)",
+    "hsla(36,72%,60%,0.46)",
+    "hsla(18,65%,62%,0.40)",
+    "hsla(345,52%,62%,0.34)",
+    "hsla(48,78%,70%,0.30)",
   ];
   const frag = document.createDocumentFragment();
   for (let i = 0; i < 10; i++) {
@@ -306,7 +306,7 @@ window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbo
 
 function launchConfetti() {
   if (prefersReducedMotion) return;
-  const colors = ["#f0507a","#d4a574","#ffb3d4","#8be9fd","#f5d6a8","#c9924a"];
+  const colors = ["#d4943a","#f5d090","#e8aa55","#f5cfd4","#db96a0","#ffe8d0"];
   const frag = document.createDocumentFragment();
   for (let i = 0; i < 80; i++) {
     const el = document.createElement("div");
@@ -397,12 +397,12 @@ window.addEventListener("mousemove", (e) => {
     const xp = (e.clientX / window.innerWidth)  * 100;
     const yp = (e.clientY / window.innerHeight) * 100;
     body.style.backgroundImage = `
-      radial-gradient(circle at ${xp}% ${yp}%, rgba(240,80,122,0.17), transparent 40%),
-      radial-gradient(circle at 14% 9%,  rgba(240,80,122,0.18) 0%, transparent 40%),
-      radial-gradient(circle at 85% 8%,  rgba(125,217,240,0.10) 0%, transparent 34%),
-      radial-gradient(circle at 50% 96%, rgba(201,146,74,0.13) 0%, transparent 48%),
-      radial-gradient(circle at 30% 60%, rgba(155,89,182,0.09) 0%, transparent 35%),
-      linear-gradient(168deg, #06040c 0%, #0d0819 48%, #06040c 100%)
+      radial-gradient(circle at ${xp}% ${yp}%, rgba(212,148,58,0.16), transparent 40%),
+      radial-gradient(circle at 20% 10%,  rgba(212,148,58,0.16) 0%, transparent 42%),
+      radial-gradient(circle at 80% 12%,  rgba(196,120,128,0.12) 0%, transparent 38%),
+      radial-gradient(circle at 50% 96%,  rgba(212,148,58,0.14) 0%, transparent 50%),
+      radial-gradient(circle at 28% 60%,  rgba(196,120,128,0.08) 0%, transparent 36%),
+      linear-gradient(168deg, #06050a 0%, #0d0b14 50%, #06050a 100%)
     `;
     lightRaf = null;
   });
