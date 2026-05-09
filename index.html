@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07050d" />
+  <meta name="description" content="A cinematic, interactive digital love story experience." />
+  <title>Our Love Story | Cinematic Anniversary Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Dancing+Script:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Film grain cinematic texture -->
+  <div id="grain" aria-hidden="true"></div>
+  <!-- Vignette edges -->
+  <div id="vignette" aria-hidden="true"></div>
+
+  <!-- ===================== LOADING SCREEN ===================== -->
+  <div id="loading-screen" aria-live="polite">
+    <div class="loader-bg" aria-hidden="true"></div>
+    <div class="loader-content">
+      <div class="loader-ring-outer" aria-hidden="true"></div>
+      <div class="loader-ring-inner" aria-hidden="true"></div>
+      <div class="loader-mark">
+        <span class="loader-letter">H</span>
+        <span class="loader-amp">&amp;</span>
+        <span class="loader-letter">A</span>
+      </div>
+      <div class="loader-line"><span></span></div>
+      <p class="loader-text">Preparing your memory film…</p>
+      <button id="loader-begin" class="begin-btn">Begin the Story</button>
+    </div>
+  </div>
+
+  <!-- Global overlays -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <div id="cursor-glow" aria-hidden="true"></div>
+  <div id="ambient-lights" aria-hidden="true"></div>
+  <div id="floating-particles" aria-hidden="true"></div>
+  <div id="confetti-container" aria-hidden="true"></div>
+
+  <!-- Side nav dots -->
+  <nav id="section-nav" aria-label="Section navigation">
+    <a href="#hero"     data-label="Beginning"><span></span></a>
+    <a href="#gallery"  data-label="Moments"><span></span></a>
+    <a href="#timeline" data-label="Journey"><span></span></a>
+    <a href="#video"    data-label="Cinema"><span></span></a>
+    <a href="#letter"   data-label="Letter"><span></span></a>
+    <a href="#finale"   data-label="Forever"><span></span></a>
+  </nav>
+
+  <!-- Floating controls -->
+  <button id="music-toggle" class="floating-control" aria-label="Toggle background music">
+    <span class="music-icon"><i></i><i></i><i></i><i></i></span>
+  </button>
+  <button id="heart-easter-egg" class="floating-heart-icon" aria-label="Secret heart message">
+    <span>❤</span>
+  </button>
+  <div id="easter-egg-message" role="status" aria-live="polite">
+    You are, and always will be, my favorite chapter.
+  </div>
+
+  <!--
+    MUSIC PLACEMENT:
+    Drop your audio file into assets/audio/ and update the src below.
+    Example: assets/audio/romantic-ambient.mp3
+  -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/audio/romantic-ambient.mp3" type="audio/mpeg" />
+  </audio>
+
+  <main id="page">
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="hero section reveal">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+      </div>
+      <!-- Decorative ring halo around center -->
+      <div class="hero-ring" aria-hidden="true"></div>
+      <div class="hero-ring hero-ring-2" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow"><span>For the One Who Makes Every Moment Beautiful</span></p>
+        <h1 class="hero-title">
+          <span class="line"><span class="word">Our</span> <span class="word">Story</span> <span class="word">in</span></span>
+          <span class="line"><span class="word italic">Light,</span> <span class="word italic">Motion,</span></span>
+          <span class="line"><span class="word">&amp;</span> <span class="word">Memory</span></span>
+        </h1>
+        <p class="hero-subtitle">
+          A living anniversary experience crafted with love — every scroll reveals a little more of us.
+        </p>
+        <!-- Date badge -->
+        <div class="hero-date" aria-label="Together since">
+          <span class="hero-date-symbol">∞</span>
+          <span class="hero-date-text">Since Day One</span>
+        </div>
+        <a class="scroll-hint" href="#gallery" aria-label="Scroll to begin">
+          <span>discover</span>
+          <span class="scroll-line"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ornament -->
+    <div class="ornament" aria-hidden="true">
+      <span></span>
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.534-9.5-9C1.18 8.96 3.4 5 7 5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 3.6 0 5.82 3.96 4.5 7-2.5 4.466-9.5 9-9.5 9z" fill="currentColor"/></svg>
+      <span></span>
+    </div>
+
+    <!-- ===================== LOVE REASONS MARQUEE ===================== -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Your smile</span><span class="sep">✦</span>
+        <span>The way you laugh</span><span class="sep">✦</span>
+        <span>Your kindness</span><span class="sep">✦</span>
+        <span>Our silences</span><span class="sep">✦</span>
+        <span>Every adventure</span><span class="sep">✦</span>
+        <span>The way you care</span><span class="sep">✦</span>
+        <span>Your voice</span><span class="sep">✦</span>
+        <span>Our inside jokes</span><span class="sep">✦</span>
+        <span>Your warmth</span><span class="sep">✦</span>
+        <span>Growing together</span><span class="sep">✦</span>
+        <!-- duplicate for seamless loop -->
+        <span>Your smile</span><span class="sep">✦</span>
+        <span>The way you laugh</span><span class="sep">✦</span>
+        <span>Your kindness</span><span class="sep">✦</span>
+        <span>Our silences</span><span class="sep">✦</span>
+        <span>Every adventure</span><span class="sep">✦</span>
+        <span>The way you care</span><span class="sep">✦</span>
+        <span>Your voice</span><span class="sep">✦</span>
+        <span>Our inside jokes</span><span class="sep">✦</span>
+        <span>Your warmth</span><span class="sep">✦</span>
+        <span>Growing together</span><span class="sep">✦</span>
+      </div>
+    </div>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section id="gallery" class="gallery-section section reveal">
+      <div class="section-heading">
+        <p class="kicker">Chapter 01 — Memories</p>
+        <h2>Moments We Keep <em>Replaying</em></h2>
+        <p class="lead">Fragments of forever, framed in tenderness.</p>
+      </div>
+
+      <!--
+        IMAGE PLACEMENT:
+        Replace each img src + data-image attribute with your own photos.
+        Recommended size: 1200px+ wide, compressed JPG or WEBP.
+      -->
+      <div class="gallery-grid">
+        <article class="gallery-item tilt-card" data-image="assets/images/moment-1.png" style="--i:0">
+          <div class="img-wrap" style="--ratio: 5/6">
+            <img src="assets/images/moment-1.png" alt="Our special moment 1" loading="lazy" />
+            <div class="img-overlay">
+              <span class="item-num">01</span>
+              <span class="zoom-icon" aria-hidden="true">↗</span>
+            </div>
+          </div>
+          <p class="caption">The night we learned silence can still say everything.</p>
+        </article>
+
+        <article class="gallery-item tilt-card" data-image="assets/images/moment-2.png" style="--i:1">
+          <div class="img-wrap" style="--ratio: 4/3">
+            <img src="assets/images/moment-2.png" alt="Our special moment 2" loading="lazy" />
+            <div class="img-overlay">
+              <span class="item-num">02</span>
+              <span class="zoom-icon" aria-hidden="true">↗</span>
+            </div>
+          </div>
+          <p class="caption">Every sunset got softer when I watched it with you.</p>
+        </article>
+
+        <article class="gallery-item tilt-card" data-image="assets/images/moment-3.png" style="--i:2">
+          <div class="img-wrap" style="--ratio: 3/4">
+            <img src="assets/images/moment-3.png" alt="Our special moment 3" loading="lazy" />
+            <div class="img-overlay">
+              <span class="item-num">03</span>
+              <span class="zoom-icon" aria-hidden="true">↗</span>
+            </div>
+          </div>
+          <p class="caption">Rain on the glass, your laughter in the room.</p>
+        </article>
+
+        <article class="gallery-item tilt-card" data-image="assets/images/moment-4.png" style="--i:3">
+          <div class="img-wrap" style="--ratio: 1/1">
+            <img src="assets/images/moment-4.png" alt="Our special moment 4" loading="lazy" />
+            <div class="img-overlay">
+              <span class="item-num">04</span>
+              <span class="zoom-icon" aria-hidden="true">↗</span>
+            </div>
+          </div>
+          <p class="caption">Through every season, your hand still feels like home.</p>
+        </article>
+
+        <article class="gallery-item tilt-card" data-image="assets/images/moment-5.png" style="--i:4">
+          <div class="img-wrap" style="--ratio: 4/5">
+            <img src="assets/images/moment-5.png" alt="Our special moment 5" loading="lazy" />
+            <div class="img-overlay">
+              <span class="item-num">05</span>
+              <span class="zoom-icon" aria-hidden="true">↗</span>
+            </div>
+          </div>
+          <p class="caption">A thousand candlelights and still, you shine brighter.</p>
+        </article>
+
+        <article class="gallery-item tilt-card" data-image="assets/images/moment-6.png" style="--i:5">
+          <div class="img-wrap" style="--ratio: 3/4">
+            <img src="assets/images/moment-6.png" alt="Our special moment 6" loading="lazy" />
+            <div class="img-overlay">
+              <span class="item-num">06</span>
+              <span class="zoom-icon" aria-hidden="true">↗</span>
+            </div>
+          </div>
+          <p class="caption">Your eyes taught me what forever looks like.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ornament -->
+    <div class="ornament" aria-hidden="true">
+      <span></span>
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.534-9.5-9C1.18 8.96 3.4 5 7 5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 3.6 0 5.82 3.96 4.5 7-2.5 4.466-9.5 9-9.5 9z" fill="currentColor"/></svg>
+      <span></span>
+    </div>
+
+    <!-- ===================== STATS STRIP ===================== -->
+    <div class="stats-strip section reveal" id="stats">
+      <div class="stat">
+        <span class="stat-number" data-target="3">0</span>
+        <span class="stat-unit">Years</span>
+        <span class="stat-label">Together</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true">✦</div>
+      <div class="stat">
+        <span class="stat-number" data-target="1095">0</span>
+        <span class="stat-unit">Days</span>
+        <span class="stat-label">of choosing each other</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true">✦</div>
+      <div class="stat">
+        <span class="stat-number" data-target="∞">∞</span>
+        <span class="stat-unit">Moments</span>
+        <span class="stat-label">Remembered forever</span>
+      </div>
+    </div>
+
+    <!-- ornament -->
+    <div class="ornament" aria-hidden="true">
+      <span></span>
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.534-9.5-9C1.18 8.96 3.4 5 7 5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 3.6 0 5.82 3.96 4.5 7-2.5 4.466-9.5 9-9.5 9z" fill="currentColor"/></svg>
+      <span></span>
+    </div>
+
+    <!-- ===================== TIMELINE ===================== -->
+    <section id="timeline" class="timeline-section section reveal">
+      <div class="section-heading">
+        <p class="kicker">Chapter 02 — Our Journey</p>
+        <h2>The Chapters of <em>Us</em></h2>
+        <p class="lead">Every beginning was just another way of finding you.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>✦</span></div>
+          <div class="timeline-card glass-card">
+            <span class="timeline-date">The Beginning</span>
+            <h3>First Hello</h3>
+            <p>A chance meeting that changed the entire direction of my universe.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>❤</span></div>
+          <div class="timeline-card glass-card">
+            <span class="timeline-date">The Realization</span>
+            <h3>When I Knew</h3>
+            <p>The moment I realized I never wanted to stop knowing you.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>✦</span></div>
+          <div class="timeline-card glass-card">
+            <span class="timeline-date">The Adventures</span>
+            <h3>Every First</h3>
+            <p>Every new place felt like home because you were there beside me.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>❤</span></div>
+          <div class="timeline-card glass-card">
+            <span class="timeline-date">Right Now</span>
+            <h3>Still Choosing You</h3>
+            <p>And every single morning, it's still you. It will always be you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ornament -->
+    <div class="ornament" aria-hidden="true">
+      <span></span>
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.534-9.5-9C1.18 8.96 3.4 5 7 5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 3.6 0 5.82 3.96 4.5 7-2.5 4.466-9.5 9-9.5 9z" fill="currentColor"/></svg>
+      <span></span>
+    </div>
+
+    <!-- ===================== VIDEO ===================== -->
+    <section id="video" class="video-section section reveal">
+      <div class="section-heading">
+        <p class="kicker">Chapter 03 — Cinema</p>
+        <h2>A Little Piece of <em>Our Story</em></h2>
+      </div>
+      <div class="video-shell glass-card">
+        <!--
+          VIDEO REPLACEMENT:
+          Replace the YouTube embed URL with your own video link.
+          Format: https://www.youtube.com/embed/YOUR_VIDEO_ID
+        -->
+        <iframe
+          src="https://www.youtube.com/embed/nWZwAwm1dJc?rel=0"
+          title="A little piece of our story"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- ornament -->
+    <div class="ornament" aria-hidden="true">
+      <span></span>
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.534-9.5-9C1.18 8.96 3.4 5 7 5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 3.6 0 5.82 3.96 4.5 7-2.5 4.466-9.5 9-9.5 9z" fill="currentColor"/></svg>
+      <span></span>
+    </div>
+
+    <!-- ===================== LOVE LETTER ===================== -->
+    <section id="letter" class="love-letter-section section reveal">
+      <div class="letter-wrap glass-card">
+        <div class="letter-seal" aria-hidden="true">❤</div>
+        <span class="quote-mark" aria-hidden="true">"</span>
+        <p class="kicker">A note, just for you</p>
+        <h2 class="letter-greeting">My <em>Love</em>,</h2>
+        <p class="line-by-line">
+          Through every season, every challenge, every laugh, and every quiet moment… I would still
+          choose you again and again.
+        </p>
+        <p class="line-by-line">
+          You are the calm in my storms, the spark in my dreams, and the gentleness that keeps my
+          world soft.
+        </p>
+        <p class="line-by-line">
+          If this life gave me endless beginnings, I would spend each one finding you.
+        </p>
+        <div class="letter-footer">
+          <div class="letter-rule"></div>
+          <p class="signature">— always yours</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ornament -->
+    <div class="ornament" aria-hidden="true">
+      <span></span>
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.534-9.5-9C1.18 8.96 3.4 5 7 5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 3.6 0 5.82 3.96 4.5 7-2.5 4.466-9.5 9-9.5 9z" fill="currentColor"/></svg>
+      <span></span>
+    </div>
+
+    <!-- ===================== FINALE ===================== -->
+    <section id="finale" class="final-section section reveal">
+      <div class="finale-bg" aria-hidden="true"></div>
+      <div class="final-content">
+        <p class="kicker">Chapter 04 — Forever</p>
+        <h2 class="final-title">
+          Forever Starts<br/>
+          <span class="shimmer">Every&nbsp;Day</span><br />
+          With You <span class="heart-pop">❤️</span>
+        </h2>
+        <p class="final-sub">Until all our tomorrows become one beautiful memory.</p>
+        <button class="cta-btn magnetic" id="replay-btn">
+          <span>Replay From The Start</span>
+        </button>
+      </div>
+      <div class="heart-particles" aria-hidden="true"></div>
+      <div class="star-field" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-mark">H <span>&amp;</span> A</div>
+        <p class="footer-line">Crafted with love, for you.</p>
+        <p class="footer-sub">Scan · Share · Remember ♡</p>
+      </div>
+    </footer>
+
+  </main><!-- end #page -->
+
+  <!-- Lightbox modal -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button id="lightbox-close" aria-label="Close image preview">×</button>
+    <figure class="lightbox-stage">
+      <img id="lightbox-image" src="" alt="Expanded romantic memory" />
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
